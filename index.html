@@ -55,8 +55,7 @@
           }
           .text2{
             font-size: 16px;
-          }
-          
+          }       
 
     </style>
 
@@ -70,7 +69,6 @@
     <title>Compare the area that affected by earthquake</title>
 </head>
 <body>
-
     <div id="map-column"></div>
     
     <div id="text-column">
@@ -98,7 +96,6 @@
 
 
     <script>
-
 
 var map = L.map('map-column').setView([43.1377, 35.5658], 5);
 
@@ -135,24 +132,25 @@ const trueSizeLayer = new L.trueSize(geojsonFeature, {
 // Define the custom marker icons
 var marasIcon = L.icon({
     iconUrl: 'aaa.png',
-    iconSize: [32, 32],
-    iconAnchor: [16, 16],
+    iconSize: [40, 40],
+    iconAnchor: [32, 32],
     popupAnchor: [0, -16],
   });
 
   var hatayIcon = L.icon({
     iconUrl: 'aaa.png',
-    iconSize: [32, 32],
+    iconSize: [40, 40],
     iconAnchor: [16, 16],
     popupAnchor: [0, -16],
   });
 
   // Add the markers to the map
   L.marker([37.48685, 37.29961], { icon: marasIcon }).addTo(map).bindPopup("<b>7.7ML at 04:17 AM </b>");
-  L.marker([37.17598, 36.74058], { icon: hatayIcon }).addTo(map).bindPopup("<b>7.6ML at 13:24 PM </b>");
+  L.marker([38.2065, 37.1931], { icon: hatayIcon }).addTo(map).bindPopup("<b>7.6ML at 13:24 PM </b>");
 
 
     </script>
 
+    
 </body>
 </html>
