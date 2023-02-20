@@ -67,7 +67,7 @@
       .legend {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 16px;
-        text-align: center;
+        text-align: left;
         line-height: 20px;
       }
       
@@ -172,7 +172,8 @@ const geoJSONLayer = L.geoJSON(geojsonFeature, {
           var legend = L.control({position: 'bottomright'});
           legend.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'legend');
-            div.innerHTML += '<img src="EQ.png"> Epicenter';
+            div.innerHTML += '<img src="EQ.png"> Epicenter<br>';
+            div.innerHTML += '<img src="AREA.png"> Affected Area';
             return div;
         };
         legend.addTo(map);
