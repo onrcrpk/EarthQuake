@@ -4,7 +4,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <style>
         #map-column {
@@ -30,6 +30,21 @@
           text-align: left;
         }
 
+        @media screen and (max-width: 768px) {
+          #text-column {
+            position: absolute;
+            width: 80%;
+            height: 40%;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            padding: 20px;
+            overflow-y: scroll;
+          }
+        }
+
+        
         h1 {
           font-size: 20px;
           font-family: Georgia, 'Times New Roman', Times, serif;
@@ -75,8 +90,37 @@
         vertical-align: middle;
         margin-right: 5px;
       }
+     
+      #map-column {
+        position: relative;
+        width: 100%;
+        height: 97vh;
+      }
+      
+      #map {
+        height: 100%;
+      }
+      
 
-
+      
+      #show-text-button {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        z-index: 1001;
+        background-color: rgb(13, 53, 15);
+        color: white;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      
+      #show-text-button:hover {
+        background-color: rgb(23, 63, 25);
+      }
       
     </style>
 
@@ -89,17 +133,17 @@
 </head>
 <body>
     <div id="map-column"></div>
-     
+    <button id="show-text-button">Hide text</button> 
     <div id="text-column">
       <h1>Compare the Impact Area of the Earthquake</h1>
       <p><span class="text"> <b> To visualize the earthquake's impact, <span class="text"; style="color:#cc0f0f"> click</span> on the affected area, and then <span style="color:#cc0f0f">hover over</span> other regions of the world. </p> </span> </b>
       <p>Earthquake Impact Zone: <span style="color:#290707; display: flex; justify-content: flex-end;"><b>108.812km²</b></span></p>
       <p>Affected Provinces:<span style="color:#290707"><b style="display: flex; justify-content: flex-end;">10</b></span> </p>
       <p>Collapsed & Heavily Damaged Buildings:<span style="color:#290707"><b style="display: flex; justify-content: flex-end;">118.000+</b></span> </p>
-
-  
     </div>
+    <div> 
     
+  </div>
 
     <script>
 
@@ -195,9 +239,15 @@ const geoJSONLayer = L.geoJSON(geojsonFeature, {
           marker2.setIcon(EQ1);
         });
         
+        const showTextButton = document.getElementById('show-text-button');
+const textColumn = document.getElementById('text-column');
 
-
-
+let isTextVisible = true;
+showTextButton.addEventListener('click', () => {
+  isTextVisible = !isTextVisible;
+  textColumn.style.display = isTextVisible ? 'block' : 'none';
+  showTextButton.innerText = isTextVisible ? 'Hide text' : 'Show text';
+});
 
 
     </script>
