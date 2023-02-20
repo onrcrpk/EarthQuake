@@ -120,8 +120,12 @@
             }
             };
             
-        // Create a geoJSON layer from the geojsonFeature and add it to the map
-        const geoJSONLayer = L.geoJSON(geojsonFeature).addTo(map);
+const geoJSONLayer = L.geoJSON(geojsonFeature, {
+  style: {
+    color: 'black'
+  }
+}).addTo(map);
+
 
         // Add a tooltip with text to the geoJSON layer
         geoJSONLayer.bindTooltip('Earthquake Impact Zone');
